@@ -1,9 +1,8 @@
+from fastapi import HTTPException
+
 from app import app
-from flask import make_response, g
 
-from app.Models.responseModel import Response
-
-@app.route('/', methods=['GET'])
+@app.get('/')
 def hello_get():
 
     try:
@@ -12,10 +11,8 @@ def hello_get():
             'response' : 'Hello World'
         }
 
-        response = Response(200, '', response)
-        return make_response(response.to_dict(), 200)
+        return response
 
     except Exception as e:
         print(str(e))
-        response = Response(500, str(e), {})
-        return make_response(response.to_dict(), 500)
+        raise HTTPException(status_code=500, detail=str(e))

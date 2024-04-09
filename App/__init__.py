@@ -1,8 +1,6 @@
-from flask import Flask
-from flask_cors import CORS
+from fastapi import FastAPI
 
-app = Flask(__name__)
-CORS(app)
+app = FastAPI()
 
 def create_app():
 
