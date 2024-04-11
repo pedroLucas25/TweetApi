@@ -1,10 +1,21 @@
-import pymysql.cursors
-
 class Config:
+
+    #region GENERAL SETUP
+
+    CLIENT_ID = 'M2Z6MjZWT0Y4OEQyUGhTcm9veUk6MTpjaQ'
+    CLIENT_SECRET = '0DLDaJXHQ0pgUrPV_FkCvbFUrexZmYZUJPNrw6NLkwcpku6xTX'
+
+    CONSUMER_KEY = 'MNYWupIWBglwGHqYJazQwfudY'
+    CONSUMER_SECRET = 'UnpFzzdctGIwwWpCmzmvrrHrsZO0tsVBqnoOhkonu6QJ9bnmMy'
+
+    REQUEST_TOKEN_URL = 'https://api.twitter.com/oauth/request_token?oauth_callback=oob&x_auth_access_type=write'
+    BASE_AUTHORIZATION_URL = 'https://api.twitter.com/oauth/authorize'
+    ACCESS_TOKEN_URL = 'https://api.twitter.com/oauth/access_token'
+
+    #endregion    
     
-    #*************
-    #DATABSE SETUP
-    #*************
+    #region DATABSE SETUP
+
     local_db_host=''
     local_db=''
     local_db_user=''
@@ -25,13 +36,10 @@ class Config:
     production_db_user=''
     production_db_password=''
 
-    cursorclass=pymysql.cursors.DictCursor
-    charset='utf8mb4'
-    autocommit=True
+    #endregion
 
-    #***********
-    #EMAIL SETUP
-    #***********
+    #region EMAIL SETUP
+
     local_email_identifier = ''
     local_email_base_url = ''
     local_email_base_url_adm = ''
@@ -56,11 +64,14 @@ class Config:
     production_email_sender = ''
     production_email_password= ''
 
-    #************************
-    #InfoData
-    #************************
+    #endregion
+
+    #region InfoData
+    
     infodata_url_active = False
     local_infodata_url = 'http://127.0.0.1:5399/'
     development_infodata_url = ''
     homolog_infodata_url = ''
     production_infodata_url = ''
+
+    #endregion
