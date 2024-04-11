@@ -1,9 +1,9 @@
+from app.Util.Utils import Utils
 from PiWeatherMap import return_data
-
 
 class TweetPost:
 
-    def teste(self, city):
+    def receive_data_from_sdk(self, city):
 
         try:
 
@@ -31,4 +31,24 @@ class TweetPost:
             return response
         
         except Exception as e:
-            print(e)
+            raise Exception(e)
+        
+    def post_tweet(self):
+
+        try:
+
+            payload = {
+                'text' : 'test post fastapi'
+            }
+
+            api = Utils.tweet_post(payload=payload)
+
+            if api.status_code != 201:
+                raise Exception(
+                    "Request returned an error: {} {}".format(api.status_code, api.text)
+                )
+            
+            return api.json()
+
+        except Exception as e:
+            raise Exception(e)
