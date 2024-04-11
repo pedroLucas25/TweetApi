@@ -1,4 +1,5 @@
 from requests_oauthlib import OAuth1Session
+from datetime import datetime
 
 from config import Config
 
@@ -52,3 +53,9 @@ class Utils:
 
         return response
 
+    def convert_timestamp(timestamp):
+        
+        dt_object = datetime.fromtimestamp(timestamp)
+        formated_data = dt_object.strftime('%d/%m')
+
+        return formated_data

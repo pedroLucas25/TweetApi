@@ -3,13 +3,15 @@ from fastapi import HTTPException, status
 from app import app
 from app.Bll.TweetPost import TweetPost
 
+from app.Models.CityReceiveModel import CityReceiveModel
+
 @app.get('/test')
-def city_get(city: str = ''):
+def city_get(city: str = None):
 
     try:
 
         tweetPost = TweetPost()
-        response = tweetPost.teste(city)
+        response = tweetPost.receive_data_from_sdk(city)
 
         return response
 
@@ -17,13 +19,13 @@ def city_get(city: str = ''):
         print(str(e))
         raise HTTPException(status_code=500, detail=str(e))
     
-@app.get('/test/tweet', status_code=status.HTTP_201_CREATED)
-def tweet_test():
+@app.post('/tweet', status_code=status.HTTP_201_CREATED)
+def post_tweet(cityReceive: CityReceiveModel):
 
     try:
 
         tweetPost = TweetPost()
-        response = tweetPost.post_tweet()
+        response = tweetPost.post_tweet(city=cityReceive.city)
 
         return response
 
