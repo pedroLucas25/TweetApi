@@ -45,17 +45,17 @@ class TweetPost:
             day = [day_data for day_data in data['daily']]
 
             payload_text =\
-                str(int((day[0]['temp']['max'] - 273.15))) + 'ºC e ' +\
+                str(int(((day[0]['temp']['max'] - 273.15) + (day[0]['temp']['min'] - 273.15)) / 2)) + 'ºC e ' +\
                 day[0]['weather'][0]['description'] + ' em ' + data['name'] +\
                 ' em ' + Utils.convert_timestamp(timestamp=day[0]['dt']) +\
                 '. Média para os próximos dias: ' +\
-                str(int((day[1]['temp']['max'] - 273.15))) + 'ºC em ' +\
+                str(int(((day[1]['temp']['max'] - 273.15) + (day[1]['temp']['min'] - 273.15)) / 2)) + 'ºC em ' +\
                 Utils.convert_timestamp(timestamp=day[1]['dt']) + ', ' + \
-                str(int((day[2]['temp']['max'] - 273.15))) + 'ºC em ' +\
+                str(int(((day[2]['temp']['max'] - 273.15) + (day[2]['temp']['min'] - 273.15)) / 2)) + 'ºC em ' +\
                 Utils.convert_timestamp(timestamp=day[2]['dt']) + ', ' + \
-                str(int((day[3]['temp']['max'] - 273.15))) + 'ºC em ' +\
+                str(int(((day[3]['temp']['max'] - 273.15) + (day[3]['temp']['min'] - 273.15)) / 2)) + 'ºC em ' +\
                 Utils.convert_timestamp(timestamp=day[3]['dt']) + ', ' + \
-                str(int((day[4]['temp']['max'] - 273.15))) + 'ºC em ' +\
+                str(int(((day[4]['temp']['max'] - 273.15) + (day[4]['temp']['min'] - 273.15)) / 2)) + 'ºC em ' +\
                 Utils.convert_timestamp(timestamp=day[4]['dt']) + '.'
             
             payload = {
